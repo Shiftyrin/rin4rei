@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Witch and Knight's Valentine</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap');
+
+        body {
+            margin: 0;
+            font-family: 'Times New Roman', serif;
+            overflow-x: hidden;
+            background: #a2bffe;
+            color: #333;
+            transition: background 1s ease;
+        }
+        .section {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 5vw;
+            font-size: 2.2rem;
+            max-width: 90%;
+            margin: 0 auto;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 1.5s ease, transform 1.5s ease;
+        }
+        .section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .envelope-container {
+            position: relative;
+            width: 180px;
+            height: 120px;
+            cursor: pointer;
+        }
+        .envelope {
+            width: 100%;
+            height: 100%;
+            background: #ffcccb;
+            position: relative;
+            border-radius: 10px;
+            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            font-weight: bold;
+            font-family: 'Dancing Script', cursive;
+        }
+        .envelope-lid {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 50%;
+            background: #ffb6c1;
+            border-radius: 10px 10px 0 0;
+            transform-origin: top;
+            transition: transform 1s ease;
+        }
+        .paper {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 150px;
+            height: 140px;
+            background: white;
+            transform: translate(-50%, -50%) translateY(0%);
+            transition: transform 1s ease 0.5s;
+            text-align: center;
+            padding: 10px;
+            font-size: 1.3rem;
+            font-weight: bold;
+            font-family: 'Dancing Script', cursive;
+            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+            opacity: 0;
+        }
+        .envelope-container.open .envelope-lid {
+            transform: rotateX(150deg);
+        }
+        .envelope-container.open .paper {
+            transform: translate(-50%, -50%) translateY(-100%);
+            opacity: 1;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .section {
+                font-size: 1.8rem;
+                padding: 8vw;
+            }
+            .envelope-container {
+                width: 140px;
+                height: 0px;
+            }
+            .envelope {
+                font-size: 16px;
+            }
+            .paper {
+                width: 130px;
+                height: 120px;
+                font-size: 1.2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .section {
+                font-size: 1.5rem;
+                padding: 10vw;
+            }
+            .envelope-container {
+                width: 120px;
+                height: 80px;
+            }
+            .envelope {
+                font-size: 14px;
+            }
+            .paper {
+                width: 110px;
+                height: 105px;
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="section visible">Hey Rei,</div>
+    <div class="section">I’ve noticed that you’ve been going through a tough time, and I just wanted to take a moment to reach out. I care about you a lot, and I can’t imagine how hard it must be for you to deal with these feelings</div>
+    <div class="section">I want you to know that you don’t have to carry the weight of this trauma or crush alone.It’s okay to feel the way you do, but also remember that you’re strong and deserving of peace and happiness.</div>
+    <div class="section">Healing takes time, and I believe that you’re more than capable of moving forward when you’re ready. No matter what, I’ll be here for you, supporting you in whatever way you need.</div>
+    <div class="section">Although we’ve only known each other for a few days, I’ve already started to develop strong feelings for you. I think you’re an amazing person, and I truly care about your well-being.</div>
+    <div class="section">I just want you to know that I’m here for you, not just as a friend, but as someone who genuinely wants to see you happy and healed.</div>
+    <div class="section">You don’t have to rush through it. Take your time, but also know that brighter days are ahead. I hope you can find a way to let go of what’s been holding you back so that you can find your own peace and happiness. You’re amazing, and I believe in you.</div>
+    
+    <div class="section">
+        <div class="envelope-container" onclick="this.classList.toggle('open')">
+            <div class="flap"></div>
+            <div class="envelope">Open Me</div>
+            <div class="paper">rei..
+            would you be my girl till you fully recovered snd eventually find someone irl?.</div>
+        </div>
+    </div>
+    
+     <script>
+        const sections = document.querySelectorAll('.section');
+        let colors = ['#a2bffe', '#c08080'];
+        let currentIndex = 0;
+
+        window.addEventListener('scroll', () => {
+            let scrollPos = window.scrollY + window.innerHeight * 0.7;
+            sections.forEach((section, index) => {
+                if (section.offsetTop < scrollPos) {
+                    section.classList.add('visible');
+                    document.body.style.background = colors[index % colors.length];
+                }
+            });
+        });
+    </script>
+</body>
+</html>
